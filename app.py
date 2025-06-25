@@ -43,7 +43,8 @@ iface = gr.Interface(
         gr.Textbox(label="Message"),
         gr.Textbox(label="API Key", type="password")
     ],
-    outputs="text"
+    outputs="json",
+    api_name="chat" 
 )
 
 iface.launch()
