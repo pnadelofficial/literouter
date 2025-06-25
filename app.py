@@ -1,17 +1,19 @@
 import gradio as gr
 from litellm import completion
 import os
-import yaml
+# import yaml
 
 # Load configuration from YAML file
-config_path = "config.yaml"
-if not os.path.exists(config_path):
-    raise FileNotFoundError(f"Configuration file {config_path} not found.") 
-with open(config_path, 'r') as file:
-    config = yaml.safe_load(file)
+# config_path = "config.yaml"
+# if not os.path.exists(config_path):
+#     raise FileNotFoundError(f"Configuration file {config_path} not found.") 
+# with open(config_path, 'r') as file:
+#     config = yaml.safe_load(file)
 
-os.environ["OPENAI_API_KEY"] = config.get("model_list", "")[0].get("litellm_params", "").get("api_key", "")
+# os.environ["OPENAI_API_KEY"] = config.get("model_list", "")[0].get("litellm_params", "").get("api_key", "")
 # os.environ["GEMINI_API_KEY"] = config.get("model_list", "")[1].get("litellm_params", "").get("api_key", "")
+
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 def route_llm_request(model, messages, api_key):
     # Verify the class API key
